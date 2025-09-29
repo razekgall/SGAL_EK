@@ -47,7 +47,7 @@
   /* ****************    CARD RIGHT BLOQUE   *************** */
   /* ******************************************************* */ 
   -->
-    <!-- ****************** ⬇️  Esto de aqui es  un modal invisible para mostrar el ID ⬇️****************  -->
+    <!-- ******************   Esto de aqui es  un modal invisible para mostrar el ID  ****************  -->
 
     <div id="cuadro-mensaje">
       <button id="cerrar-modal">❌</button>
@@ -57,11 +57,11 @@
     </div>
     
 
-<!-- ******************   ⬆️  Esto de aqui es  un modal invisible para mostrar el ID  ⬆️ ****************  -->
+<!-- ******************   Esto de aqui es  un modal invisible para mostrar el ID   ****************  -->
 
 
   <main class="cardright">
-    <form class="cardright__form cardright__form--top3" ><!-- El enctype es para aceptar imagenes y mandarlas a una carpeta uploads -->
+  <form class="cardright__form cardright__form--top3" enctype="multipart/form-data"><!-- El enctype es para aceptar imagenes y mandarlas a una carpeta uploads -->
       <p class="cardright__header-form">REGISTRO CULTIVO</p>
 
       <fieldset class="cardright__body-form">
@@ -103,14 +103,14 @@
           <div class="cardright__subcontainer-input">
             <label class="cardright__label-form">Resolución max 150*150
               px</label>
-            <input class="cardright__input-form cardright__input-form--file" placeholder type="file" />
+            <input class="cardright__input-form cardright__input-form--file" type="file" name="image_crop" />
           </div>
           <button class="cardright__botton-primary" type="submit">CREAR</button>
         </div>
       </fieldset>
 
       <div class>
-        <!-- ⬇️ Esto debe mandar para el main(todavia no esta listo) -->
+        <!-- Esto debe mandar para el main(todavia no esta listo) -->
         <button class="cardright__botton-secundary" ><a href="/frontend/views/index_main.html">CANCELAR</a></button>
       </div>
 

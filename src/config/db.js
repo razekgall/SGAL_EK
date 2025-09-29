@@ -3,9 +3,9 @@ const mongoose = require('mongoose'); // <- Importa mongoose, una librería ODM 
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    console.log('🟢 MongoDB connected');
+    console.log('MongoDB se ha conectado!');
   } catch (err) {
-    console.error('🔴 MongoDB connection error:', err.message);
+    console.error('MongoDB error en la conexión!', err.message);
     process.exit(1);
   }
 };

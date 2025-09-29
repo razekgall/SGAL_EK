@@ -20,11 +20,11 @@ const upload = multer({ storage }); // ← reemplaza el anterior
 // console.log("✔ sensorValidator es array:", Array.isArray(sensorValidator));
 // console.log("✔ upload.array devuelve función:", typeof upload.array('image_sensor'));  <- Para validar tipo de dato en caso de alguna falla
 
-router.post('/', sensorValidator, upload.array('imagen_sensor'), sensorController.createSensor);
+router.post('/', sensorValidator, upload.array('image_sensor'), sensorController.createSensor);
 router.get('/list', sensorController.listSensor); 
 router.get('/:id', sensorController.getSensorById);
 router.get('/', sensorController.getSensors);
-router.put('/:id', upload.array('imagen_sensor'), sensorValidator, sensorController.updateSensor);
+router.put('/:id', upload.array('image_sensor'), sensorValidator, sensorController.updateSensor);
 router.delete('/:id', sensorController.deleteSensor);
 
 module.exports = router;

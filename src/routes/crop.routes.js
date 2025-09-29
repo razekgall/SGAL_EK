@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }); // ← reemplaza el anterior
 
-router.post('/', cropValidator, upload.array('imagen_crop'), cropController.createCrop);
+router.post('/', cropValidator, upload.array('image_crop'), cropController.createCrop);
 router.get('/', cropController.getCrops);
 router.get('/list', cropController.listCrop); 
 router.get('/:id', cropController.getCropById); 
