@@ -3,7 +3,7 @@ const Counter = require('../models/counters/counter2.model');
 // Crear un Sensor
 exports.createSensor = async (req, res) => {
   
-  console.log("respuesta del cuerpo = "+ JSON.stringify(req.body, null, 2))
+  
   try {
     // Incrementa el contador
     const counter = await Counter.findOneAndUpdate(
@@ -12,7 +12,6 @@ exports.createSensor = async (req, res) => {
       { new: true, upsert: true }      // crea si no existe
     );
     
-    req.body.sensorId = counter.seq;
     const imageName = req.files?.[0]?.filename || '';
 
     // Construir el nuevo sensor
@@ -23,7 +22,7 @@ exports.createSensor = async (req, res) => {
     });
     
     await sensor.save();
-    const readableId = sensor.sensorId.toString().padStart(3, '0');
+    const readableId = sensor.sensorId.toString().padStart(3, '0'); 
     res.status(201).json({ message: 'Sensor creado exitosamente',sensorId: readableId, data: sensor });
   } catch (error) {
     console.error(error);
@@ -130,5 +129,51 @@ exports.deleteSensor = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error al eliminar Sensor', error });
+  }
+};
+
+
+
+
+
+exports.getsensor = async (req, res) => {
+  try {
+    const sensor = await Sensor.find({}, { name_sensor: 1, _id: 0 , quantity_sensor : 1 });
+    
+    if (!sensor.length) return res.status(200).json([]); // mejor 200 que 404
+    res.status(200).json(sensor);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al obtener sensor habilitados", error });
+  }
+};
+
+
+
+exports.stocksensor = async (req, res) => {
+  const { sensores } = req.body; // [{ name_sensor, cantidadUsada }]
+
+  if (!Array.isArray(sensores) || sensores.length === 0) {
+    return res
+      .status(400)
+      .json({ error: "No se recibieron sensores válidos" });
+  }
+
+  try {
+    for (const consumo of sensores) {
+      const { name_sensor, cantidadUsada } = consumo;
+
+      // Restar stock con $inc (número negativo)
+      await Sensor.updateOne(
+        { name_sensor },
+        { $inc: { quantity_sensor: -cantidadUsada } }
+      );
+    }
+
+    res.json({ mensaje: "Stock actualizado exitosamente" });
+  } catch (error) {
+    console.error("Error actualizando stock:", error);
+    res.status(500).json({ error: "Error al actualizar stock" });
   }
 };
