@@ -359,7 +359,7 @@ function actualizarTotalDinero() {
 
 function agregarinsumoATabla() {
     if (produccionData.consumables.length >= 3) {
-        alert("Solo puedes agregar hasta 3 insumos.");
+        alert("Solo puedes agregar hasta 8 insumos.");
         return;
     }
     if (produccionData.consumables.length >= 3) {
@@ -853,4 +853,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
   });
-  

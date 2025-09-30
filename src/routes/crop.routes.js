@@ -18,11 +18,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }); // ← reemplaza el anterior
 
 router.post('/', cropValidator, upload.array('image_crop'), cropController.createCrop);
-router.get('/', cropController.getCrops);
+router.get('/integrador/api/cultivos', cropController.getCrops);
 router.get('/getcrop', cropController.searchcrop);
 router.get('/list', cropController.listCrop); 
 router.get('/:id', cropController.getCropById); 
 router.put('/:id', upload.array('image_cultivo'), cropValidator, cropController.updateCrop);
 router.delete('/:id', cropController.deleteCrop);
 
-module.exports = router; 
+module.exports = router;

@@ -58,11 +58,56 @@
 
                 <div class="cardright__container-input">
 
-                    <div class="cardright__subcontainer-input">
-                        <label class="cardright__label-form" for="">Nombre del Ciclo Cultivo</label>
-                        <!-- Se añade nueva clase: nuevo-nombreCiclo -->
-                        <input class="cardright__input-form cardright__input-form--name" placeholder="Ej : Fase de crecimiento" type="text" />
-                    </div>
+                <div class="cardright__subcontainer-input">
+                <label class="cardright__label-form" for="nombreCiclo">Nombre del Ciclo Cultivo</label>
+
+                <select class="cardright__input-form cardright__input-form--name" id="nombreCiclo" name="nombreCiclo" required>
+                    <option value="">Seleccione un ciclo</option>
+
+                    <optgroup label="Aguacate">
+                    <option value="Inducción floral">Inducción floral</option>
+                    <option value="Poda estratégica">Poda estratégica</option>
+                    <option value="Cuaje controlado">Cuaje controlado</option>
+                    <option value="Maduración escalonada">Maduración escalonada</option>
+                    </optgroup>
+
+                    <optgroup label="Plátano">
+                    <option value="Deshije técnico">Deshije técnico</option>
+                    <option value="Cosecha continua">Cosecha continua</option>
+                    <option value="Fertilización dirigida">Fertilización dirigida</option>
+                    <option value="Control sigatoka">Control sigatoka</option>
+                    </optgroup>
+
+                    <optgroup label="Café">
+                    <option value="Floración cruzada">Floración cruzada</option>
+                    <option value="Cosecha selectiva">Cosecha selectiva</option>
+                    <option value="Renovación varietal">Renovación varietal</option>
+                    <option value="Perfil sensorial">Perfil sensorial</option>
+                    </optgroup>
+
+                    <optgroup label="Banano">
+                    <option value="Empaque limpio">Empaque limpio</option>
+                    <option value="Deshoje programado">Deshoje programado</option>
+                    <option value="Exportación directa">Exportación directa</option>
+                    <option value="Manejo postcosecha">Manejo postcosecha</option>
+                    </optgroup>
+
+                    <optgroup label="Hortalizas">
+                    <option value="Siembra escalonada">Siembra escalonada</option>
+                    <option value="Invernadero activo">Invernadero activo</option>
+                    <option value="Rotación eficiente">Rotación eficiente</option>
+                    <option value="Control biológico">Control biológico</option>
+                    </optgroup>
+
+                    <optgroup label="Cítricos">
+                    <option value="Cuaje precoz">Cuaje precoz</option>
+                    <option value="Poda sanitaria">Poda sanitaria</option>
+                    <option value="Maduración tardía">Maduración tardía</option>
+                    <option value="Manejo de plagas">Manejo de plagas</option>
+                    </optgroup>
+                </select>
+                </div>
+
 
                     <div class="cardright__subcontainer-input">
                         <label class="cardright__label-form" for="">Descripción</label>
@@ -84,9 +129,39 @@
                     </div>
 
                     <div class="cardright__subcontainer-input">
-                        <label class="cardright__label-form" for="">Novedad</label>
-                        <!-- Se añade nueva clase: nuevo-novedad -->
-                        <input class="cardright__input-form cardright__input-form--news" placeholder="Ej : Hojas Opacas" type="text" />
+                    <label class="cardright__label-form" for="novedad">Novedad</label>
+
+                    <select class="cardright__input-form cardright__input-form--news nuevo-novedad" id="novedad" name="novedad" required>
+                        <option value="">Seleccione una novedad</option>
+
+                        <optgroup label="Fisiológicas">
+                        <option value="Hojas opacas">Hojas opacas</option>
+                        <option value="Fruto pequeño">Fruto pequeño</option>
+                        <option value="Crecimiento lento">Crecimiento lento</option>
+                        <option value="Maduración irregular">Maduración irregular</option>
+                        </optgroup>
+
+                        <optgroup label="Sanitarias">
+                        <option value="Presencia de roya">Presencia de roya</option>
+                        <option value="Manchas foliares">Manchas foliares</option>
+                        <option value="Plagas visibles">Plagas visibles</option>
+                        <option value="Tallo afectado">Tallo afectado</option>
+                        </optgroup>
+
+                        <optgroup label="Fenológicas">
+                        <option value="Floración tardía">Floración tardía</option>
+                        <option value="Cuaje débil">Cuaje débil</option>
+                        <option value="Deshoje prematuro">Deshoje prematuro</option>
+                        <option value="Fruto deformado">Fruto deformado</option>
+                        </optgroup>
+
+                        <optgroup label="Manejo y entorno">
+                        <option value="Fertilización excesiva">Fertilización excesiva</option>
+                        <option value="Riego insuficiente">Riego insuficiente</option>
+                        <option value="Compactación del suelo">Compactación del suelo</option>
+                        <option value="Daño por viento">Daño por viento</option>
+                        </optgroup>
+                    </select>
                     </div>
 
                     <!-- BOTON INDICADOR CAMBIO DE COLOR ESTADO  -->

@@ -9,6 +9,7 @@ const cycleRoutes = require('./routes/cycle.routes');
 const sensorRoutes = require('./routes/sensor.routes');
 const consumableRoutes = require('./routes/consumable.routes');
 const ProductionRoutes = require('./routes/productions.routes');
+const sensorReadingsRoutes = require('./routes/sensorReadings.routes');
 
 const app = express(); // <- Crea la instancia principal de Express, que se usa para configurar middlewares, rutas, etc.
 const path = require('path');
@@ -17,11 +18,13 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev')); // <- para ver las peticiones en consola, pro ejemplo GET /api/users 200 15.234 ms - 324 , POST /api/auth/login 401 8.432 ms - 45
 app.use('/api/auth', userRoutes);
-app.use('/api/crops', cropRoutes);
-app.use('/api/cycle', cycleRoutes);
-app.use('/api/sensor', sensorRoutes);
-app.use('/api/consumable', consumableRoutes);
-app.use('/api/production', ProductionRoutes);
+app.use('/api/crops', cropRoutes); // Para gestión de formularios y API REST
+app.use('/', cropRoutes); //             Para endpoints públicos como /integrador
+app.use('/api/cycle', cycleRoutes); // Para gestión de formularios y API REST
+app.use('/api/sensor', sensorRoutes); // Para gestión de formularios y API REST
+app.use('/api/consumable', consumableRoutes); // Para gestión de formularios y API REST
+app.use('/api/production', ProductionRoutes); // Para gestión de formularios y API REST
+app.use('/api/sensor-readings', sensorReadingsRoutes); 
 app.use('/uploads-sensor', express.static(path.join(__dirname, '../uploads-sensor')));
 app.use('/uploads-crop', express.static(path.join(__dirname, '../uploads-crop')));
 // app.use(errorHandler);

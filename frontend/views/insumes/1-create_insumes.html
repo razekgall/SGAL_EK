@@ -57,15 +57,66 @@
             <fieldset class="cardright__body-form">
 
                 <div class="cardright__container-input">
-                    <div class="cardright__subcontainer-input">
-                        <label class="cardright__label-form" for="">Tipo de Insumo</label>
-                        <input class="cardright__input-form cardright__input-form--type" placeholder="Ej : pesticida " type="text" />
-                    </div>
 
                     <div class="cardright__subcontainer-input">
-                        <label class="cardright__label-form" for="">Nombre del Insumo</label>
-                        <input class="cardright__input-form cardright__input-form--name" placeholder="Ej : herbicida" type="text" />
-                    </div>
+                        <label class="cardright__label-form" for="tipoInsumo">Tipo de Insumo</label>
+
+                        <select class="cardright__input-form cardright__input-form--type nuevo-tipoInsumo" id="tipoInsumo" name="tipoInsumo" required>
+                            <option value="">Seleccione un tipo</option>
+
+                            <option value="Fertilizante">Nutrición vegetal</option>
+                            <option value="Abono orgánico">Propagación</option>
+                            <option value="Biofermento">Biológicos</option>
+                            <option value="Abono verde">Equipos</option>
+
+
+                    </select>
+                </div>
+
+
+                <div class="cardright__subcontainer-input">
+                <label class="cardright__label-form" for="nombreInsumo">Nombre del Insumo</label>
+
+                <select class="cardright__input-form cardright__input-form--name" id="nombreInsumo" name="nombreInsumo" required>
+                    <option value="">Seleccione un insumo</option>
+
+                    <optgroup label="Nutrición vegetal">
+                    <option value="Fertilizante compuesto">Fertilizante compuesto</option>
+                    <option value="Abono orgánico sólido">Abono orgánico sólido</option>
+                    <option value="Biofermento líquido">Biofermento líquido</option>
+                    <option value="Abono verde triturado">Abono verde triturado</option>
+                    </optgroup>
+
+                    <optgroup label="Propagación">
+                    <option value="Semilla certificada">Semilla certificada</option>
+                    <option value="Plántula en bandeja">Plántula en bandeja</option>
+                    <option value="Esqueje enraizado">Esqueje enraizado</option>
+                    <option value="Injerto compatible">Injerto compatible</option>
+                    <option value="Hijuelo seleccionado">Hijuelo seleccionado</option>
+                    <option value="Material de vivero">Material de vivero</option>
+                    <option value="Patrón resistente">Patrón resistente</option>
+                    </optgroup>
+
+                    <optgroup label="Biológicos">
+                    <option value="Microorganismos nativos">Microorganismos nativos</option>
+                    <option value="Biofermento activado">Biofermento activado</option>
+                    <option value="Caldo microbiano">Caldo microbiano</option>
+                    <option value="Extracto vegetal">Extracto vegetal</option>
+                    <option value="Control biológico">Control biológico</option>
+                    </optgroup>
+
+                    <optgroup label="Equipos y herramientas">
+                    <option value="Machete">Machete</option>
+                    <option value="Tijera de poda">Tijera de poda</option>
+                    <option value="Pulverizador manual">Pulverizador manual</option>
+                    <option value="Azadón">Azadón</option>
+                    <option value="Pala">Pala</option>
+                    <option value="Rastrillo">Rastrillo</option>
+                    <option value="Canasto cosechero">Canasto cosechero</option>
+                    </optgroup>
+                </select>
+                </div>
+
 
                     <div class="cardright__subcontainer-input">
                         <label class="cardright__label-form" for="">Cantidad</label>
@@ -73,9 +124,31 @@
                     </div>
 
                     <div class="cardright__subcontainer-input">
-                        <label class="cardright__label-form" for="">Unidad de Medida</label>
-                        <input class="cardright__input-form cardright__input-form--unit-consumables" placeholder="Ej : mL/ha" type="text" />
+                    <label class="cardright__label-form" for="unidadMedida">Unidad de Medida</label>
+
+                    <select class="cardright__input-form cardright__input-form--unit-consumables" id="unidadMedida" name="unidadMedida" required>
+                        <option value="">Seleccione una unidad</option>
+
+                        <optgroup label="Sólidos">
+                        <option value="kg">Kilo (kg)</option>
+                        <option value="gr">Gramo (gr)</option>
+                        <option value="saco">Saco</option>
+                        </optgroup>
+
+                        <optgroup label="Líquidos">
+                        <option value="L">Litro (L)</option>
+                        <option value="gal">Galón (gal)</option>
+                        <option value="mL">Mililitro (mL)</option>
+                        </optgroup>
+
+                        <optgroup label="Empaque y presentación">
+                        <option value="rollo">Rollo</option>
+                        <option value="ud">Unidad (ud)</option>
+                        </optgroup>
+                    </select>
                     </div>
+
+
 
                     <div class="cardright__subcontainer-input">
                         <label class="cardright__label-form" for="">Valor Unitario</label>
@@ -89,7 +162,7 @@
 
                     <div class="cardright__subcontainer-input">
                         <label class="cardright__label-form" for="">Descripción</label>
-                        <input class="cardright__input-form cardright__input-form--description" placeholder="Ej : Usar tapabocas al usarlo" type="text" />
+                        <input class="cardright__input-form cardright__input-form--description" placeholder="Ej : Aguacate Cafe Cacao Maiz Medicinal" type="text" />
                     </div>
 
                     <button class="cardright__botton-primary" type="submit">CREAR</button>

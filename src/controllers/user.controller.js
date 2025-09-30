@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
         role: user.type_user  // Esto es clave para el frontend
       },
       process.env.JWT_SECRET,
-      { expiresIn: '5m' }
+      { expiresIn: '15m' }
     );
 
     res.json({ message: 'Login exitoso', token });
