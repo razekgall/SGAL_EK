@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRODUCCION GENERAL</title>
+    <!-- CDN de Chart.js versión 2.5.0 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <!-- CDN de Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- CDN de GOOGLE -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="../../public/css/styles-dashboard.css" />
+</head>
+
+<body>
+    <header>
+        <h2 class="produto__user"></h2>
+    </header>
+
+    <main class="producto">
+        <h1 class="producto__subtittle">VISTA GENERAL DE PRODUCCIONES</h1>
+        <!-- contenedor 1 -->
+        <div class="producto__container-row">
+            <!-- modulo 1 -->
+            <div class="producto__subcontainer">
+                <h2 class="producto__subtittle">LISTA DE CULTIVOS SEGUN m²</h2>
+
+                <div id="chart_lista_cultivos" style="width: 100%; height: 100%"></div>
+
+            </div>
+
+            <!-- modulo 2 -->
+            <div class="producto__subcontainer2">
+                <h2 class="producto__subtittle">MAPA SENA SEDE LEMBO</h2>
+
+                <div class="producto__img-wrapper">
+                    <img class="producto__imagen-mapa" id="imagen-mapa" src="../../public/img_/main/sedelembo.png"
+                        alt="Mapa" />
+                    <div class="producto__contenedor" id="contenedor"></div>
+                </div>
+                <button class="producto__card-button" id="guardar">Guardar selección</button>
+            </div>
+
+            <!-- modulo 3 -->
+            <div class="producto__subcontainer">
+                <h2 class="producto__subtittle">LISTA DE INSUMOS</h2>
+                <div id="chart_lista_insumos" style="width: 100%; height: 100%"></div>
+            </div>
+
+            <!-- modulo 4 -->
+            <div class="producto__subcontainer">
+                <h2 class="producto__subtittle">NOTIFICACIONES</h2>
+                <table class="producto__tabla">
+                    <thead>
+                        <tr class="producto__tabla-header">
+                            <th class="producto__cell">Id_Cultivo</th>
+                            <th class="producto__cell">Id_Usuario</th>
+                            <th class="producto__cell">Novedad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="producto__tabla-data">
+                            <td class="producto__cell">767</td>
+                            <td class="producto__cell">Pablo_A</td>
+                            <td class="producto__cell-lg">Nota</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- contenedor 2 -->
+        <h2 class="producto__subtittle">FINANZAS</h2>
+
+        <div class="producto__container-row">
+            <!-- modulo 2.1 -->
+            <div class="producto__subcontainer">
+                <h2 class="producto__subtittle">COSTO X CULTIVOS</h2>
+                <canvas id="Costo_General_Cultivos" style="width:35vw; height:100vh;"></canvas>
+            </div>
+
+            <div class="producto__subcontainer">
+                <h2 class="producto__subtittle">CALCULADORA DE INVERSIÓN</h2>
+                <table class="producto__tabla">
+                    <thead>
+                        <tr class="producto__tabla-header">
+                            <th class="producto__cell">Nombre</th>
+                            <th class="producto__cell">Total Invertido</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaInversion"></tbody>
+                </table>
+
+            </div>
+
+            <!-- modulo 2.1  SENSORES-->
+            <div class="producto__subcontainer">
+                <h2 class="producto__subtittle">SENSORES 24/7</h2>
+
+                <div class="producto__card-container-row">
+
+                    <div class="producto__subcontainer">
+                        <canvas id="Sensors_24/7" style="width:12vw; height:30vh;"></canvas>
+
+                        <div style=" width: 50%;">
+                            <button onclick="changeLegendPosition('top')">Top</button>
+                            <button onclick="changeLegendPosition('right')">Right</button>
+                            <button onclick="changeLegendPosition('bottom')">Bottom</button>
+                            <button onclick="changeLegendPosition('left')">Left</button>
+                        </div>
+                    </div>
+
+                    <div class="producto__card-container">
+                        <div class="producto__sensores-container">
+                            <h3 class="producto__card-titulo">Temperatura</h3>
+                            <div class="producto__card-sensores">
+                                <span class="producto__card-dato1 producto__card-valor1">30</span><span
+                                    class="producto__card-dato1 producto__unidad1">°C</span>
+                            </div>
+
+                            <h3 class="producto__card-titulo">Maxima</h3>
+
+                            <div class="producto__card-sensores">
+                                <span class="producto__card-dato1 producto__card-valor2">31</span><span
+                                    class="producto__card-dato1 producto__unidad2">°C</span>
+                            </div>
+
+                            <h3 class="producto__card-titulo">Minima</h3>
+                            <div class="producto__card-sensores">
+                                <span class="producto__card-dato1 producto__card-valor3">11</span><span
+                                    class="producto__card-dato1 producto__unidad3">°C</span>
+                            </div>
+                        </div>
+
+                        <div class="producto__sensores-container">
+                            <h3 class="producto__card-titulo">Humedad</h3>
+                            <div class="producto__card-sensores">
+                                <span class="producto__card-dato1 producto__card-valor4">88</span><span
+                                    class="producto__card-dato1 producto__unidad4">°C</span>
+                            </div>
+                            <h3 class="producto__card-titulo">Maxima</h3>
+                            <div class="producto__card-sensores">
+                                <span class="producto__card-dato1 producto__card-valor5">90</span><span
+                                    class="producto__card-dato1 producto__unidad5">°C</span>
+                            </div>
+                            <h3 class="producto__card-titulo">Minima</h3>
+                            <div class="producto__card-sensores">
+                                <span class="producto__card-dato1 producto__card-valor6">55</span><span
+                                    class="producto__card-dato1 producto__unidad6">°C</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+ 
+      <div class>
+        <button class="cardright__botton-secundary" ><a href="../index_main.html">HOME</a></button>
+      </div>
+
+
+
+
+    </main>
+
+    <script src="../../js/dashboard/cultivos_chart.js"></script>
+
+    <script src="../../js/dashboard/mapa_checkboxes.js"></script>
+
+    <script src="../../js/dashboard/insumos_chart.js"></script>
+
+    <script src="../../js/dashboard/finanzas_chart.js"></script>
+
+    <script src="../../js/dashboard/costos_cultivos_chart.js"></script>
+
+    <script src="../../js/dashboard/inversion_anual.js"></script>
+
+    <script src="../../js/dashboard/sensores_chart.js"></script>
+
+    <script src="/frontend/js/auth/session_auth.js"></script>
+</body>
+
+</html>
