@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../../public/css/styles-dashboard.css" />
 </head>
 
-<body>
+<body data-production-id="ID_DE_LA_PRODUCCION_ACTUAL">
     <header>
         <h2 class="produto__user"></h2>
     </header>
@@ -44,7 +44,10 @@
                         alt="Mapa" />
                     <div class="producto__contenedor" id="contenedor"></div>
                 </div>
-                <button class="producto__card-button" id="guardar">Guardar selección</button>
+                <div style="display: flex; width: 100%;">
+                    <button class="producto__card-button" id="guardar" style="width: 50%;">Guardar selección</button>
+                    <button class="producto__card-button" id="reset" style="width: 50%;">Reset</button>
+                </div>
             </div>
 
 
@@ -221,21 +224,38 @@
             contenedor.appendChild(label);
         }
 
-        // Guardar
-        document.getElementById('guardar').addEventListener('click', () => {
-            const seleccionados = Array.from(document.querySelectorAll('.checkbox:checked'))
-                .map(checkbox => parseInt(checkbox.id.replace('checkbox-', '')));
+        // Obtén el id de producción desde el atributo data-production-id del body
+const productionId = document.body.getAttribute('data-production-id');
 
-            fetch('http://localhost:5501/cuadros_seleccionados', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ seleccionados })
-            })
-                .then(res => res.json())
-                .then(data => {
-                    alert("Cuadros guardados correctamente");
-                    console.log(data);
-                });
+// Guardar solo los checkboxes verdes
+document.getElementById('guardar').addEventListener('click', () => {
+    // Selecciona solo los checkboxes marcados y cuyo label es verde
+    const seleccionados = Array.from(document.querySelectorAll('.checkbox:checked')).filter(checkbox => {
+        const label = document.querySelector(`label[for="${checkbox.id}"]`);
+        // Ajusta esto si tu lógica de color es diferente
+        return label && (label.classList.contains('verde') || label.style.backgroundColor === 'green');
+    }).map(checkbox => parseInt(checkbox.id.replace('checkbox-', '')));
+
+    fetch('http://localhost:5501/api/productions_position', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productionId, positions: seleccionados })
+    })
+        .then(res => res.json())
+        .then(data => {
+            alert("Posiciones guardadas correctamente");
+            console.log(data);
+        });
+});
+
+        // Reset: desmarca todos los checkboxes que no están bloqueados ni guardados
+        document.getElementById('reset').addEventListener('click', () => {
+            document.querySelectorAll('.checkbox').forEach(checkbox => {
+                // Solo desmarcar si no está bloqueado ni guardado
+                if (!checkbox.disabled) {
+                    checkbox.checked = false;
+                }
+            });
         });
 
         // Cargar seleccionados
